@@ -1,0 +1,138 @@
+// ===== Config
+// ================================================================
+// Switchers
+$switcher-height: 2rem;
+$switcher-width: 4rem;
+$switcher-line-height: 1rem;
+$switcher-color: $border-color;
+$switcher-color-active: $primary-color;
+
+// Checkboxes
+$checkbox-size: 1.6rem;
+$checkbox-icon-size: 0.95rem;
+$checkbox-border-radius: 2px;
+$checkbox-text-indent: -0.05rem;
+
+// Inputs
+$input-font-size: 1.4rem;
+$input-font-color: #555;
+$input-border-color: $border-color;
+$input-border-radius: $border-radius;
+$input-height: 4.2rem;
+$input-padding: 1.2rem;
+
+
+// ===== Switchers
+// ================================================================
+.switcher {
+	width: $switcher-width;
+	height: $switcher-height;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+
+	input {
+		width: $switcher-width;
+		height: $switcher-height;
+		opacity: 0;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+
+		&:checked + .switcher__lever {
+			&::after {
+				background-color: $switcher-color-active;
+
+				@include translate($switcher-width - $switcher-line-height * 2, 0);
+			}
+
+			&::before {
+				background-color: lighten($switcher-color-active, 15%);
+			}
+		}
+	}
+}
+
+.switcher__lever::before {
+	content: "";
+	display: block;
+	width: $switcher-width - ($switcher-height - $switcher-line-height);
+	height: $switcher-line-height;
+	background-color: $switcher-color;
+	border-radius: $switcher-height / 2;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: ($switcher-height - $switcher-line-height) / 2;
+
+	@include transition(background-color ease .15s);
+}
+
+.switcher__lever::after {
+	content: "";
+	display: block;
+	width: $switcher-height;
+	height: $switcher-height;
+	background-color: darken($switcher-color, 5%);
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	@include transition(transform ease .15s);
+}
+
+
+
+
+
+// ===== Checkboxes
+// ================================================================
+.checkbox {
+	height: $checkbox-size;
+	width: $checkbox-size;
+    font-size: 1rem;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+    cursor: pointer;
+	text-align: left;
+}
+.checkbox__input {
+    opacity: 0;
+	height: $checkbox-size;
+	width: $checkbox-size;
+	position: absolute;
+	z-index: 1;
+    cursor: pointer;
+}
+.checkbox__label {
+	height: $checkbox-size;
+	width: $checkbox-size;
+	display: block;
+	border: 1px solid #BBB;
+ 	background-color: #FFF;
+	border-radius: $checkbox-border-radius;
+	box-sizing: border-box;
+
+    @include user-select(none);
+}
+.checkbox__input:checked + .checkbox__label::after {
+	content: "\f00c";
+	font-family: FontAwesome;
+	background-color: $primary-color;
+	color: #FFF;
+	text-align: center;
+    line-height: $checkbox-size;
+    width: $checkbox-size;
+    display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: $checkbox-border-radius;
+	font-weight: normal;
+    font-size: $checkbox-icon-size;
+	text-indent: $checkbox-text-indent;
+}

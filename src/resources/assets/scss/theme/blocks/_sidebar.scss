@@ -1,0 +1,73 @@
+.sidebar {
+	width: $sidebar-item-height;
+	background-color: $sidebar-color;
+	height: 100%;
+	position: fixed;
+	top: $header-height;
+	left: 0;
+	bottom: 0;
+	font-size: 1.3rem;
+
+	.icon {
+		color: $sidebar-icon-color;
+	}
+}
+
+.sidebar__item {
+	display: block;
+	width: $sidebar-item-height;
+	height: $sidebar-item-height;
+	line-height: $sidebar-item-height;
+	text-align: center;
+	cursor: pointer;
+
+	@include transition(background-color $default-transition);
+}
+.sidebar__item--active, .sidebar__item:hover {
+	background-color: lighten($sidebar-color, 10%);
+}
+
+
+
+.sidebar__children {
+	width: $sidebar-children-width;
+	background-color: $sidebar-children-color;
+	height: 100%;
+	position: fixed;
+	top: $header-height;
+	left: $sidebar-item-height;
+	bottom: 0;
+	display: none;
+}
+.sidebar__item:hover + .sidebar__children {
+	display: block;
+	z-index: 1;
+}
+.sidebar__children:hover {
+	display: block;
+	z-index: 1;
+}
+.sidebar__item--active + .sidebar__children {
+	display: block;
+}
+
+.sidebar__children__item {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0 $sidebar-children-item-height / 3;
+	height: $sidebar-children-item-height;
+	line-height: $sidebar-children-item-height;
+	text-align: left;
+	cursor: pointer;
+	color: #FFF;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	@include transition(background-color $default-transition);
+
+	&:hover {
+		background-color: lighten($sidebar-children-color, 10%);
+	}
+}

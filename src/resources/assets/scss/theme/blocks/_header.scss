@@ -1,0 +1,126 @@
+#header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: $header-color;
+	height: $header-height;
+	z-index: $z-index-menu-up;
+	display: flex;
+	justify-content: flex-end;
+
+	@include box-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
+
+.header__sitename {
+	height: $header-height;
+	width: $sidebar-item-height + $sidebar-children-width;
+
+	img {
+		margin: ($header-height - $header-icon-size) / 2;
+		width: $header-icon-size;
+		height: $header-icon-size;
+		float: left;
+	}
+}
+.header__sitename__link {
+	line-height: $header-height;
+	display: inline-block;
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: $font-color;
+	padding-right: $default-padding;
+}
+
+.header__translation, .header__settings, .header__exit {
+	width: $header-height;
+	height: $header-height;
+	line-height: $header-height;
+	text-align: center;
+	display: block;
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: $font-color;
+	cursor: pointer;
+
+	@include transition(background-color $default-transition);
+
+	&:hover {
+		background-color: darken($header-color, 4%);
+	}
+}
+
+.header__translation--active {
+	color: $primary-color;
+}
+
+.header__language {
+	width: auto;
+	align-self: center;
+	padding: 0 $default-padding;
+	text-transform: uppercase;
+}
+.header__language__caret {
+	margin-left: $default-padding / 2;
+}
+.header__language__select {
+	.select__value, .select__values__option {
+		font-size: 1.3rem;
+	}
+}
+
+.header__user {
+	height: $header-height;
+	line-height: $header-height;
+	display: block;
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: $font-color;
+	padding: 0 $default-padding;
+	cursor: default;
+}
+
+
+
+.header__navigation {
+	margin-left: $default-padding;
+	margin-right: auto;
+	align-self: center;
+}
+
+.header__path {
+	font-size: 1.3rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	display: inline-block;
+    vertical-align: middle;
+}
+.header__path__item + .header__path__item::before {
+	content: "\f105";
+	font-family: FontAwesome;
+    font-size: 1.6rem;
+    line-height: 1.5rem;
+    display: inline-block;
+    vertical-align: top;
+	margin: 0 6px 0 5px;
+}
+
+.header__add-item {
+	height: 34px;
+	line-height: 34px;
+	display: inline-block;
+	// font-weight: bold;
+	font-size: 1.3rem;
+	color: $primary-color;
+	padding: 0 $default-padding;
+	cursor: pointer;
+	border: 1px solid $primary-color;
+	border-radius: $border-radius;
+	margin-left: $default-padding;
+
+	.icon {
+		font-weight: normal;
+		margin-left: 10px;
+		display: none;
+	}
+}

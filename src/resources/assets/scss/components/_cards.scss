@@ -1,0 +1,82 @@
+// Config
+$card-background-color: #FFF;
+$card-border-radius: $border-radius;
+$card-margin-bottom: $default-padding;
+$card-header-border: 1px solid $border-color;
+
+$card-list-header-height: 4rem;
+
+$card-form-header-height: 5rem;
+
+
+
+// Styles
+.card {
+	background-color: $card-background-color;
+	border-radius: $card-border-radius;
+	margin-bottom: $default-padding;
+	margin-right: $default-padding - $ib-margin;
+	
+	@include box-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
+// .card--list {
+	
+// }
+
+.card__header {
+	border-bottom: $card-header-border;
+	min-height: $card-list-header-height;
+
+	.select {
+		margin: 0.4rem;
+	}
+}
+
+.card-buttons {
+	padding: $default-padding;
+}
+
+.card--list .pagination {
+	float: right;
+}
+
+
+
+
+// ===== Form
+// ================================================================
+.card--form {
+	display: inline-block;
+	vertical-align: top;
+
+	.card__header {
+		h2 {
+			margin: 0;
+			line-height: $card-form-header-height;
+			font-size: 1.6rem;
+			padding: 0 $default-padding;
+		}
+	}
+
+	.form {
+		padding: $default-padding;
+	}
+	
+	// & + .card, & + .card-holder {
+	// 	margin-left: $default-padding - $ib-margin;
+	// }
+}
+
+
+
+
+// ===== Card holder
+// ================================================================
+.card-holder {
+	display: inline-block;
+	vertical-align: top;
+
+	.card {
+		margin-bottom: $default-padding;
+	}
+}

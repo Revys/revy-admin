@@ -1,0 +1,83 @@
+// Config
+$alert-font-size: 1.3rem;
+$alert-border-radius: $border-radius;
+$alert-padding: 1.5rem 2rem;
+
+$alert-primary-color: $primary-color;
+$alert-success-color: $success-color;
+$alert-danger-color: $danger-color;
+$alert-warning-color: $warning-color;
+$alert-info-color: $info-color;
+$alert-default-color: #333;
+
+
+
+// Styles
+#alerts {
+	position: fixed;
+	top: $header-height + $default-padding;
+	right: $default-padding;
+	max-width: 20%;
+	overflow: visible;
+	height: 0;
+}
+
+.alert {
+	font-size: $alert-font-size;
+	color: #FFF;
+	border-radius: $alert-border-radius;
+	background-color: $alert-default-color;
+	padding: $alert-padding;
+	box-sizing: border-box;
+	outline: none;
+	cursor: pointer;
+	display: block;
+	margin-bottom: $default-padding;
+	white-space: nowrap;
+
+	@include animation(
+		showAlert 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+	);
+
+	@include transition(all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55));
+}
+
+.alert--primary {
+	background-color: $alert-primary-color;
+}
+
+.alert--success {
+	background-color: $alert-success-color;
+}
+
+.alert--danger {
+	background-color: $alert-danger-color;
+}
+
+.alert--warning {
+	background-color: $alert-warning-color;
+}
+
+.alert--info {
+	background-color: $alert-info-color;
+}
+
+
+
+.alert--hidden {
+	opacity: 0;
+	@include translate(150%, 0);
+	position: absolute;
+	right: 0;
+}
+
+@include keyframes(showAlert)
+{
+    0% {
+		@include translate(150%, 0);
+    }
+
+    100% {
+		@include translate(0, 0);
+    }
+}

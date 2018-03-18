@@ -1,0 +1,53 @@
+// Config
+$pagination-button-size: 4rem;
+$pagination-button-color: darken(#FFF, 4%);
+$pagination-button-border-radius: $border-radius;
+$pagination-button-border-color: $border-color;
+
+
+
+// Styles
+.pagination {
+	display: flex;
+	align-items: center;
+}
+
+.pagination__button {
+	width: $pagination-button-size;
+	height: $pagination-button-size;
+	line-height: $pagination-button-size;
+	box-sizing: border-box;
+	//border: 1px solid $pagination-button-border-color;
+	//border-radius: $pagination-button-border-radius;
+	//background-color: $pagination-button-color;
+	display: block;
+	cursor: pointer;
+	color: $font-color;
+	
+	@include transition(background-color $default-transition);
+}
+.pagination__button--disabled {
+	//background-color: transparent;
+	cursor: default;
+	opacity: 0.4;
+}
+.pagination__button:not(.pagination__button--disabled):hover {
+	background-color: $pagination-button-color;
+}
+
+.pagination__button::after {
+	font-family: FontAwesome;
+	text-align: center;
+	display: block;
+	font-size: 1.2rem;
+}
+.pagination__button--prev {
+	margin-left: $default-padding;
+}
+.pagination__button--prev::after {
+	content: "\f053";
+	text-indent: -1px;
+}
+.pagination__button--next::after {
+	content: "\f054";
+}

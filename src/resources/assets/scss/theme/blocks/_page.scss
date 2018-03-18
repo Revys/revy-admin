@@ -1,0 +1,49 @@
+html {
+	font-size: $font-scale-px * $font-scale;
+}
+
+body {
+	display: block;
+	font-family: $font-main, sans-serif;
+	font-size: $font-size;
+	color: $font-color;
+	background-color: $background-color-2;
+	min-width: $body-min-width;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	font-feature-settings: 'lnum';
+	-moz-font-feature-settings: 'lnum=1';
+	-ms-font-feature-settings: 'lnum';
+	-webkit-font-feature-settings: 'lnum';
+	-o-font-feature-settings: 'lnum';
+}
+
+#app {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+
+	&:not(.no-sidebar) {
+		padding-left: $sidebar-width;
+	}
+	&:not(.no-header) {
+		padding-top: $header-height;
+	}
+}
+
+#content {
+	padding: $default-padding;
+	opacity: 0;
+
+	&.ready {
+		opacity: 1;
+	}
+}

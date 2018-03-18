@@ -1,0 +1,1 @@
+@controller('translations', $object->id)

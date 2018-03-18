@@ -1,0 +1,215 @@
+select {
+	background-color: #FFF;
+	text-transform: inherit;
+}
+
+.form__group {
+	font-size: 0;
+	margin-bottom: $default-padding;
+}
+.form__group--toggler {
+	.form__group__label {
+		display: inline-block;
+		vertical-align: middle;
+		margin-bottom: 2px;
+		margin-right: $default-padding / 2;
+		cursor: pointer;
+	}
+}
+
+.form__group__label {
+	font-size: $font-size;
+	color: #555;
+	display: block;
+	line-height: 1;
+	margin-bottom: $default-padding / 2;
+	font-weight: bold;
+}
+
+.form__group__input {
+	font-size: $input-font-size;
+	color: $input-font-color;
+	display: block;
+	width: 100%;
+	max-width: 460px;
+	min-width: 460px * 0.7;
+	border: 1px solid $input-border-color;
+	border-radius: $input-border-radius;
+	padding: $input-padding;
+	height: $input-height;
+	line-height: 1;
+	box-sizing: border-box;
+}
+.form__group__input--h-small {
+	height: $input-height * 0.9;
+}
+
+.form__group__input--small {
+	max-width: 160px;
+	min-width: 160px * 0.7;
+}
+.form__group__input--large {
+	max-width: 1000px;
+	min-width: 1000px * 0.7;
+}
+.form__group__input--full {
+	max-width: 100%;
+}
+
+.form__group__input-group {
+	position: relative;
+}
+
+
+.form__group__errors {
+	font-size: $font-size;
+	margin-top: $default-padding / 2;
+}
+.form__group__error {
+	color: $error-color;
+}
+
+
+
+.form__group__textarea {
+	min-height: 80px;
+	height: 80px;
+	font-size: $font-size;
+}
+
+
+
+.form__group--editor {
+	font-size: $input-font-size;
+	min-width: 600px;
+
+	.form__group__input-group {
+		min-height: 282px;
+	}
+
+	.form__group__textarea {
+		min-height: 282px;
+		width: 100%;
+		max-width: none;
+	}
+}
+
+// Remove froala licence notification
+.fr-wrapper > div:first-child {
+	opacity: 0 !important;
+	margin-top: -50px !important;
+	z-index: -1 !important;
+	position: absolute !important;
+}
+// ---
+
+
+
+
+
+.form__group__translation__input {
+	margin-top: $default-padding / 2;
+	display: flex;
+
+	input {
+		padding-right: $input-height + rem(1px) * 2 +  rem($default-padding) / 2;
+	}
+}
+
+.form__group__translation__locale {
+	text-transform: uppercase;
+	font-size: 1.2rem;
+	position: relative;
+	left: -$input-height - rem(1px);
+	border-left: 1px solid $input-border-color;
+	height: $input-height - rem(1px) * 2;
+	line-height: $input-height - rem(1px) * 2;
+	width: $input-height;
+	text-align: center;
+	align-self: center;
+}
+.form__group--editor {
+	.form__group__translation__input {
+		display: block;
+		margin-top: 0;
+	}
+
+	.form__group__translation__locale {
+		left: 0;
+		border: none;
+		width: 100%;
+	}
+}
+
+
+
+
+
+
+
+// Iconpicker
+.iconpicker-popover.popover {
+    top: 100%;
+    right: 0;
+    left: auto;
+    z-index: 10;
+    border: 1px solid $border-color;
+    margin-top: 5px;
+	width: 100%;
+	
+	.popover-title {
+		padding: $default-padding / 2;
+	}
+
+	.iconpicker-search {
+		width: 100%;
+		border: 1px solid #e6e6e6;
+		border-radius: 2px;
+		padding: 1rem;
+		height: 3.8rem;
+		line-height: 1;
+		box-sizing: border-box;
+	}
+
+	.iconpicker-selected {
+		background-color: $primary-color;
+		color: #FFF;
+	}
+}
+.form__group__input__picked-icon {
+	font-size: 1.4rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: $input-height;
+	height: $input-height;
+	line-height: $input-height;
+	font-weight: normal;
+	text-align: center;
+}
+// Iconpicker END
+
+.form__group__actions {
+	margin-top: $default-padding * 2;
+	font-size: 0;
+
+	.button + .button {
+		margin-left: $default-padding;
+	}
+	
+	.button--back {
+		float: right;
+	}
+}
+
+
+
+
+
+.form__group__image {
+	height: auto;
+}
+
+.form__images {
+	margin-top: $default-padding;
+}

@@ -1,0 +1,47 @@
+.images {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 648px;
+	align-items: flex-start;
+
+}
+
+.image {
+	box-shadow: $box-shadow;
+	border-radius: $border-radius;
+	position: relative;
+	margin: $default-padding / 2;
+
+	img {
+		width: 200px;
+		height: auto;
+		max-height: 200px;
+		display: block;
+	}
+}
+
+.sortable-ghost {
+	opacity: 0.5;
+}
+
+.image__delete {
+	$size: 26px;
+
+	&::after {
+		content: "\f00d";
+		font-family: FontAwesome, sans-serif;
+		font-size: 1.4rem;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		height: $size;
+		line-height: $size;
+		width: $size;
+		text-align: center;
+		background-color: #FFF;
+		border-radius: 50%;
+		overflow: hidden;
+		cursor: pointer;
+		box-shadow: $box-shadow;
+	}
+}

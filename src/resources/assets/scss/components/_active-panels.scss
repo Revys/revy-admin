@@ -1,0 +1,86 @@
+// Config
+$active-panel-caption-size: 1.8rem;
+$active-panel-bg-color: #5A69C6;
+$active-panel-color: #FFF;
+$active-panel-color-disabled: #999;
+
+$active-panel-padding: $card-form-header-height;
+$active-panel-edit-padding: $card-form-header-height;
+
+$active-panel-button-size: 40px;
+$active-panel-button-icon-size: 20px;
+
+
+
+// Styles
+.active-panel {
+	background-color: $active-panel-bg-color;
+	margin: (-$default-padding) (-$default-padding) (-$active-panel-edit-padding / 1rem * 10px - 1);
+	padding: $default-padding * 2 $default-padding ($default-padding * 2 + $active-panel-edit-padding / 1rem * 10px + 1);
+	color: $active-panel-color;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.active-panel__caption {
+	font-size: $active-panel-caption-size;
+	margin: 0 auto 0 0;
+	font-weight: normal;
+
+	small {
+		font-weight: bold;
+		margin-left: $default-padding;
+	}
+}
+
+.active-panel__button {
+	min-width: $active-panel-button-size;
+	height: $active-panel-button-size;
+	line-height: $active-panel-button-size;
+	cursor: pointer;
+	display: block;
+	margin: -($active-panel-button-size - $active-panel-button-icon-size) / 2 0;
+	border-radius: $border-radius;
+	color: #FFF;
+	font-size: $font-size;
+	padding: 0 $default-padding;
+
+	@include transition(background-color $default-transition);
+
+	&:hover {
+		background-color: darken($active-panel-bg-color, 3%);
+	}
+
+	.icon {
+		width: $active-panel-button-icon-size;
+		height: $active-panel-button-icon-size;
+		margin: ($active-panel-button-size - $active-panel-button-icon-size) / 2;
+	}
+}
+.active-panel__button + .active-panel__button {
+	margin-left: $default-padding;
+}
+.active-panel__button:last-child {
+	// margin-right: -($active-panel-button-size - $active-panel-button-icon-size) / 2;
+}
+
+.active-panel__button--icon {
+	padding: 0;
+}
+
+.active-panel__button--back {
+	$active-panel-button-icon-size: $active-panel-button-icon-size * 1.1;
+
+	// width: $active-panel-button-icon-size + $default-padding * 2;
+	// height: $active-panel-button-icon-size + $default-padding * 2;
+	// margin: (-$default-padding) 0 (-$default-padding) (-$default-padding);
+
+	// .icon {
+	// 	width: $active-panel-button-icon-size;
+	// 	height: $active-panel-button-icon-size;
+	// 	margin: $default-padding;
+	// }
+	margin-left: -($active-panel-button-size - $active-panel-button-icon-size) / 2;
+	margin-right: $default-padding - ($active-panel-button-size - $active-panel-button-icon-size) / 2; 
+}

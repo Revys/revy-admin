@@ -1,0 +1,46 @@
+@mixin triangle($side, $height, $color) {
+    border: $height solid transparent;
+	border-#{$side}-color: $color;
+}
+
+
+@mixin respond-to($media: 0, $max: 0) {
+	@if $media == mobile {
+		@media only screen and (max-width: $mobile-screen) { @content; }
+	}
+	@else if $media == tablet {
+		@media only screen and (min-width: $mobile-screen + 1) and (max-width: $tablet-screen - 1) { @content; }
+	}
+	@else if $media == notebook {
+		@media only screen and (min-width: $tablet-screen + 1) and (max-width: $large-screen - 1) { @content; }
+	}
+	@else if $media == wide {
+		@media only screen and (min-width: $large-screen) { @content; }
+	}
+	@else if ($media == 0 and $max != 0) {
+		@media only screen and (max-width: $max - 1) { @content; }
+	}
+	@else if ($media != 0 and $max == 0) {
+		@media only screen and (min-width: $media - 1) { @content; }
+	}
+	@else {
+		@media only screen and (min-width: $media + 1) and (max-width: $max - 1) { @content; }
+	}
+}
+
+
+@mixin keyframes($animationName)
+{
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

@@ -1,0 +1,23 @@
+$actions-size: 3.2rem;
+
+.actions {
+	position: fixed;
+	bottom: $default-padding;
+	left: $sidebar-width + $default-padding-rem;
+	
+	@include transition(all $default-transition);
+	@include translateY($button-height + $default-padding-rem);
+}
+.actions--visible {
+	@include translateY(0);
+}
+
+.actions__action {
+	float: left;
+
+	@include box-shadow($box-shadow);
+
+	& + & {
+		margin-left: $default-padding;
+	}
+}

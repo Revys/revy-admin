@@ -1,0 +1,14 @@
+// Header
+$header-color: #FFF;
+$header-height: 60px !default;
+$header-icon-size: 32px !default;
+
+// Sidebar
+$sidebar-color: #282F39;
+$sidebar-children-color: #31353E; 
+$sidebar-icon-color: #DDD; 
+$sidebar-item-height: 6rem;
+$sidebar-children-item-height: 6rem;
+$sidebar-children-width: 20rem; 
+
+$sidebar-width: $sidebar-item-height + $sidebar-children-width; 

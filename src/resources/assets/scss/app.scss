@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+// Mixins
+@import "utils/prefixer";
+@import "utils/mixins";
+@import "utils/functions";
+
+// Variables;
+@import "theme/config/base";
+@import "theme/config/blocks";
+@import "theme/config/components";
+
+// Reset
+@import "utils/normalize";
+
+// Utils 
+@import "utils/grid";
+@import "utils/colors";
+
+// Content
+@import "theme/fonts";
+@import "theme/global";
+@import "theme/icons";
+
+@import "theme/page";
+
+// Responsive
+@import "theme/responsive";
+
+
+// Vendor
+@import "~fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css";
+
+$fa-font-path: '/admin-assets/fonts/font-awesome';
+@import "~font-awesome/scss/font-awesome.scss";

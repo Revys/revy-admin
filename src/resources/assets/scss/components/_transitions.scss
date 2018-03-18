@@ -1,0 +1,20 @@
+.transition {
+
+	&__slide-fade {
+		&--transition {
+			@include transition(all .15s ease);
+		}
+		&--leave {
+			transform: translateY(10px);
+			opacity: 0;
+		}
+		&--active {
+			display: block;
+		}
+		&--enter {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+}

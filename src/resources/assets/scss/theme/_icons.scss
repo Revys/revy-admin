@@ -1,0 +1,73 @@
+i.icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+ 
+
+    &.icon- {
+
+
+        &-point::after {
+            content: "\f10c";
+        }
+
+        &-menu::after {
+            content: "\f0c9";
+        }
+        
+        &-close::after {
+            content: "\f00d";
+        }
+
+        &-language::after {
+            content: "\f0ac";
+        }
+
+        &-settings::after {
+            content: "\f085";
+        }
+
+        &-exit::after {
+            content: "\f08b";
+        }
+
+        &-caret::after {
+            content: "\f107";
+        }
+
+        &-add::after {
+            content: "\f067";
+        }
+
+        &-active-panel-back {
+            background-image: url($icons-path + "/active-panel-back.svg");
+        }
+
+        &-active-panel-export {
+            background-image: url($icons-path + "/active-panel-export.svg");
+        }
+
+        &-active-panel-copy {
+            background-image: url($icons-path + "/active-panel-copy.svg");
+        }
+
+        &-delete::after {
+            content: "\f1f8";
+        }
+
+        &-visible::after {
+            content: "";
+            display: block;
+            background-image: url($icons-path + "/invisible.svg");
+            background-repeat: no-repeat;
+            background-size: 1.8rem;
+            background-position: center;
+            width: 1em;
+            height: 1em;
+        }
+
+    }
+}
