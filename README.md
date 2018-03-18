@@ -25,7 +25,8 @@ Admin Panel for Laravel Framework
     php artisan migrate
     ```
 3. Run seeder
-    If you didn't seed revye/revy package, run
+
+    If you didn't seed revys/revy package, run
     ```
     php artisan db:seed --class="Revys\RevyAdmin\Database\Seeds\DatabaseSeeder"
     ```
