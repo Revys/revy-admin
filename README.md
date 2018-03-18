@@ -7,6 +7,11 @@ Admin Panel on Revy Framework
 - Translations management
 - Images management [wip]
 
+## Requirements
+- Laravel >5.6
+- PHP >7.0
+- ``revys/revy`` package
+
 ## Installation
 
 1. Add to your composer.json
