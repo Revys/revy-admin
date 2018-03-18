@@ -8,9 +8,7 @@ Admin Panel for Laravel Framework
 - Images management [wip]
 
 ## Requirements
-- Laravel >5.6
-- PHP >7.0
-- ``revys/revy`` package
+- Laravel >=5.6
 
 ## Installation
 
