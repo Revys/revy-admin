@@ -1,6 +1,6 @@
 # Revy Admin
 
-Admin Panel on Revy Framework
+Admin Panel for Laravel Framework
 
 ## Features
 - CRUD
