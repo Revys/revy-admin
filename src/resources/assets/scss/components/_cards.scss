@@ -36,6 +36,9 @@ $card-form-header-height: 5rem;
 	padding: $default-padding;
 }
 
+.card--list {
+	margin-right: 0;
+}
 .card--list .pagination {
 	float: right;
 }

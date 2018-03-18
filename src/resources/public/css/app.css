@@ -3715,6 +3715,10 @@ select {
   padding: 16px;
 }
 
+.card--list {
+  margin-right: 0;
+}
+
 .card--list .pagination {
   float: right;
 }
@@ -4269,11 +4273,6 @@ body {
 
 #content {
   padding: 16px;
-  opacity: 0;
-}
-
-#content.ready {
-  opacity: 1;
 }
 
 #header {

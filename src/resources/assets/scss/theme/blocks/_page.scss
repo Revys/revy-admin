@@ -41,9 +41,4 @@ body {
 
 #content {
 	padding: $default-padding;
-	opacity: 0;
-
-	&.ready {
-		opacity: 1;
-	}
 }

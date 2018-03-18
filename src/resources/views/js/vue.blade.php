@@ -8,7 +8,7 @@
 			},
 
 			mounted() {
-                $("#content").addClass('ready');
+
 			}
 		});
 	</script>
