@@ -14,7 +14,7 @@ class TranslationsBase
     public function __construct()
     {
         // Backend
-        if (config('revy.config.package_development')) {
+        if (config('revy.package_development')) {
             $this->addGroup(
                 'revy-admin',
                 \RevyAdmin::getPackagePath('translations'),
@@ -181,7 +181,7 @@ class TranslationsBase
         }
 
         if (! \File::exists(dirname($path))) {
-            \File::makeDirectory(dirname($path), 0777, true);
+            \File::makeDirectory(dirname($path), 0755, true);
         }
 
         file_put_contents($path, $content);
@@ -196,6 +196,12 @@ class TranslationsBase
         return $group['path'] . DIRECTORY_SEPARATOR . $language . '.json';
     }
 
+    /**
+     * @param null $group
+     * @param null $language
+     * @todo Replace 'create_function' for something else
+     * @throws \Exception
+     */
     public function indexPhrases($group = null, $language = null)
     {
         $language = $language ?? Revy::getLocale();

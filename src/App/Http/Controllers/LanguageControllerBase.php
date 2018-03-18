@@ -61,7 +61,7 @@ class LanguageControllerBase extends Controller
         ];
     }
     
-    public function toggle_translation_mode()
+    public function toggleTranslationMode()
     {
         \Revy::assertAjax();
 
@@ -97,7 +97,7 @@ class LanguageControllerBase extends Controller
     /**
      * @return array
      */
-    public function save_translations()
+    public function saveTranslations()
     {
         \Revy::assertAjax();
 
@@ -132,7 +132,7 @@ class LanguageControllerBase extends Controller
     /**
      * @return array|\Illuminate\Contracts\View\View
      */
-    public function index_phrases()
+    public function indexPhrases()
     {
         \Revy::assertAjax();
 
@@ -147,7 +147,7 @@ class LanguageControllerBase extends Controller
             
             Alerts::success(__('Фразы успешно проиндексированы'));
         } catch (\Exception $ex) {
-            \Log::error($ex->getMessage());
+            \Log::error($ex);
             Alerts::fail($ex->getMessage());
         }
 

@@ -191,7 +191,7 @@ class ControllerBase extends Controller
         return $data;
     }
 
-    public static function normalizeListData(array $data)
+    public static function normalizeListData($data)
     {
         return $data;
     }
@@ -433,7 +433,7 @@ class ControllerBase extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fast_delete()
+    public function fastDelete()
     {
         \Revy::assertAjax();
 
@@ -459,7 +459,7 @@ class ControllerBase extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fast_publish()
+    public function fastPublish()
     {
         \Revy::assertAjax();
 
@@ -485,7 +485,7 @@ class ControllerBase extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fast_hide()
+    public function fastHide()
     {
         \Revy::assertAjax();
 

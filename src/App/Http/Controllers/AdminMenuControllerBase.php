@@ -27,23 +27,15 @@ class AdminMenuControllerBase extends Controller
 		];
     }
 
-    public function index()
+    public static function normalizeListData($data)
     {
-        $data = [];
+        $items = Tree::sort($data['items']);
 
-        $data['fields'] = static::listFieldsMap();
-
-        $items = $this->getModel()::withTranslation()->get();
-  
-        $items = Tree::sort($items);
-        
         $data['items'] = new Collection($items);
 
         $data['tree'] = true;
 
-        $data = static::normalizeListData($data);
-
-        return $this->view('index', $data);
+        return parent::normalizeListData($data);
     }
 
     public static function editFieldsMap()
