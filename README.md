@@ -26,9 +26,9 @@ Admin Panel for Laravel Framework
     ```
 3. Run seeder
 
-    If you didn't seed revys/revy package, run
+    If you didn't seed ``revys/revy`` package, run
     ```
-    php artisan db:seed --class="Revys\RevyAdmin\Database\Seeds\DatabaseSeeder"
+    php artisan db:seed --class="Revys\Revy\Database\Seeds\DatabaseSeeder"
     ```
     then seed this package
     ```
