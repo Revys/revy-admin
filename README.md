@@ -14,16 +14,7 @@ Admin Panel for Laravel Framework
 
 ## Installation
 
-1. Add to your composer.json
-    ```
-    "repositories": [
-         {
-             "type": "git",
-             "url": "https://github.com/Revys/revy-admin"
-         }
-    ]
-    ```
-3. Install package via *composer require*
+1. Install package via *composer require*
     ```
     composer require revys/revy-admin
     ```
@@ -31,15 +22,15 @@ Admin Panel for Laravel Framework
     ```
     "revys/revy-admin": "^0.0.1"
     ```
-4. Run migrations
+2. Run migrations
     ```
     php artisan migrate
     ```
-5. Run seeder
+3. Run seeder
     ```
     php artisan db:seed --class="Revys\RevyAdmin\Database\Seeds\DatabaseSeeder"
     ```
-6. Change User model class in **config/auth.php**
+4. Change User model class in **config/auth.php**
     ```php
     'providers' => [
         'users' => [
