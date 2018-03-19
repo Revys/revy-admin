@@ -1,15 +1,15 @@
 @push('vue')
 	<script>
-		window.vm = new Vue({
-			el: '#app',
+        window.vm = new Vue({
+            el: '#app',
 
-			components: {
-				// RevySelect
-			},
+            components: {
+                // RevySelect
+            },
 
-			mounted() {
+            mounted() {
 
-			}
-		});
+            }
+        });
 	</script>
 @endpush

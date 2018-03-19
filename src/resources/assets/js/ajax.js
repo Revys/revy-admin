@@ -1,3 +1,10 @@
+function startLoader() {
+    window.Loader.show();
+}
+function stopLoader(result) {
+    window.Loader.done(result);
+}
+
 // Ajax block replace request
 $.fn.request = function(options)
 {  
@@ -31,7 +38,7 @@ $.fn.request = function(options)
 
 	opts.oc = this.attr('id');
 
-	// this.startLoader();   
+	startLoader();
 	
 	return request(opts);
 }
@@ -79,11 +86,13 @@ let requestSuccess = function(options, data)
 	}
 
 	throwAlerts(data);
+    stopLoader('success');
 }
 
 let requestFail = function(options, errors)
 {  
 	throwAlerts(errors);
+    stopLoader('error');
 
 	console.log('Request failed', options);
 	console.log('Errors', errors);

@@ -39,7 +39,7 @@
 
 			methods: {
 				// Add alert.
-				add(message, tag = 'default', time = 3) {
+				add(message, tag = 'default', time = 30) {
 					if (!message) 
 						return false;
 		
