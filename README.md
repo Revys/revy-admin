@@ -18,13 +18,19 @@ Admin Panel for Laravel Framework
     ```
     or add to your composer.json to **autoload** section and update your dependencies
     ```
-    "revys/revy-admin": "^0.0.1"
+    "revys/revy-admin": "*"
     ```
 2. Run migrations
     ```
     php artisan migrate
     ```
 3. Run seeder
+
+    If you didn't seed ``revys/revy`` package, run
+    ```
+    php artisan db:seed --class="Revys\Revy\Database\Seeds\DatabaseSeeder"
+    ```
+    then seed this package
     ```
     php artisan db:seed --class="Revys\RevyAdmin\Database\Seeds\DatabaseSeeder"
     ```
