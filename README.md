@@ -37,6 +37,10 @@ Admin Panel for Laravel Framework
         ],
      ]
     ```
+5. Publish assets
+    ```
+    php artisan vendor:publish --provider="Revys\RevyAdmin\App\Providers\RevyAdminServiceProvider" --tag=public
+    ```
     
 You are ready to go!
 
