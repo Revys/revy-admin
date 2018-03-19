@@ -4414,6 +4414,74 @@ body {
   display: none;
 }
 
+.loader {
+  display: none;
+  position: fixed;
+  height: 2px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.loader__status {
+  width: 0;
+  height: 2px;
+  background-color: #2980b9;
+  -webkit-animation: loading-progress 5s cubic-bezier(0, 0.5, 0.25, 1) forwards;
+          animation: loading-progress 5s cubic-bezier(0, 0.5, 0.25, 1) forwards;
+}
+
+.loader__status-max {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 0;
+  height: 2px;
+  background-color: #2980b9;
+  -webkit-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+}
+
+.loader--visible {
+  display: block;
+}
+
+.loader--finish .loader__status {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.loader--finish .loader__status-max {
+  width: 100%;
+}
+
+.loader__status-max--success {
+  background-color: #66BB6A;
+}
+
+.loader__status-max--error {
+  background-color: #FF6E58;
+}
+
+@-webkit-keyframes loading-progress {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 90%;
+  }
+}
+
+@keyframes loading-progress {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 90%;
+  }
+}
+
 .sidebar {
   width: 6rem;
   background-color: #282F39;
