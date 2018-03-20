@@ -4,6 +4,7 @@ namespace Revys\RevyAdmin\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Http\Response;
 use Revys\Revy\App\Traits\WithImages;
 use View;
 use Revys\RevyAdmin\App\Http\Composers\GlobalsComposer;
@@ -92,23 +93,27 @@ class ControllerBase extends Controller
 
     /**
      * @param array $data
+     * @param array $additional
      * @return array
      */
-    public function ajax(...$data)
+    public function ajax($data = [], $additional = [])
     {
         $content = [];
 
-        foreach ($data as $value) {
-            if ($value instanceof Arrayable)
-                $value = $value->toArray();
+        if ($data instanceof Arrayable)
+            $data = $data->toArray();
 
-            $content = array_merge($content, $value);
-        }
+        $content = array_merge($data, $additional);
 
         if (! isset($content['redirect']))
             $content['alerts'] = $this->prepareAlerts();
 
         return $content;
+    }
+
+    public function ajaxWithCode($httpCode, $data = [], $additional = [])
+    {
+        return response()->json($this->ajax($data, $additional), $httpCode);
     }
 
     public function prepareAlerts()
@@ -209,11 +214,11 @@ class ControllerBase extends Controller
     {
         return [
             'save'   => [
-                'label' => __('admin::buttons.save'),
-                'style' => 'success',
+                'label'  => __('admin::buttons.save'),
+                'style'  => 'success',
                 'method' => 'PUT',
-                'type'  => 'submit',
-                'href'  => function ($controller, $object) {
+                'type'   => 'submit',
+                'href'   => function ($controller, $object) {
                     return route('admin::update', [$controller, optional($object)->id]);
                 }
             ],

@@ -1,6 +1,4 @@
 <header id="header">
-	<loader></loader>
-
 	<div class="header__sitename">
 		<a href="/{{ $locale->code }}" class="header__sitename__link" target="_blank">
 			{{ Html::image('admin-assets/img/site/logo.svg', false, ['class' => 'logo', 'width' => 32, 'height' => 32]) }}

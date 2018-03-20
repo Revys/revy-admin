@@ -5,6 +5,8 @@
 	</head>
 	<body>
 		<div id="app">
+			<loader></loader>
+
 			@include('admin::includes.modules')
 			
 			@include('admin::blocks.header')

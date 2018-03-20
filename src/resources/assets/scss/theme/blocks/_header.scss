@@ -129,6 +129,9 @@
 .loader {
 	display: none;
 	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $z-index-menu-up + 1;
 	height: 2px;
 	width: 100%;
 	overflow: hidden;

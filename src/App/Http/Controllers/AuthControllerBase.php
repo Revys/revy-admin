@@ -4,13 +4,11 @@ namespace Revys\RevyAdmin\App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Response;
 use Revys\RevyAdmin\App\Alerts;
 use Revys\RevyAdmin\App\User;
 
-/**
- * @todo Error handle. Show errors in view
- */
-class AuthControllerBase extends Controller
+class AuthControllerBase extends ControllerBase
 {
     public function login()
     {
@@ -25,29 +23,26 @@ class AuthControllerBase extends Controller
         $id = $request->input('id');
         $password = $request->input('password');
         $remember = $request->input('remember');
+        $redirect = $request->input('redirect');
 
         if (
             ! Auth::attempt(['login' => $id, 'password' => $password], $remember) and
             ! Auth::attempt(['email' => $id, 'password' => $password], $remember)
         ) {
-            return [
-                'error'    => __('Неверный логин или пароль'),
-                'id'       => $id,
-                'remember' => $remember
-            ];
+            Alerts::fail(__('Неверный логин или пароль'));
+
+            return $this->ajaxWithCode(Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         if (! Auth::user()->isAdmin()) {
             Auth::logout();
 
-            return [
-                'error'    => __('У вас недостаточно прав'),
-                'id'       => $id,
-                'remember' => $remember
-            ];
+            Alerts::fail(__('У вас недостаточно прав'));
+
+            return $this->ajaxWithCode(Response::HTTP_FORBIDDEN);
         }
 
-        return [];
+        return $this->ajax([], compact('redirect'));
     }
 
     public function logout()

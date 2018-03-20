@@ -8,12 +8,15 @@
 
         data() {
             return {
-                form: null
+                form: null,
+                formEl: null
             }
         },
 
         created() {
-            let serialized = $('#' + this.formId).serializeArray();
+            this.formEl = document.getElementById(this.formId);
+
+            let serialized = $(this.formEl).serializeArray();
             let data = {};
 
             $.map(serialized, function(n, i){
@@ -23,16 +26,12 @@
             this.form = new Form(data);
         },
 
-        mounted() {
-
-        },
-
         methods: {
             submit() {
                 let vm = this;
-console.log(vm.form.data());
+
                 $.request({
-                    url: vm.$el.action,
+                    url: vm.formEl.action,
                     data: vm.form.data(),
                     success(data) {
                         vm.form.set(data);

@@ -25,6 +25,13 @@ class Errors {
     }
 
     /**
+     * Retrieve the error messages
+     */
+    getAll() {
+        return this.errors;
+    }
+
+    /**
      * Retrieve the error message for a field.
      *
      * @param {string} field
@@ -36,7 +43,7 @@ class Errors {
     }
 
     /**
-     * Retrieve the error message for a field.
+     * Retrieve the error message for the first field.
      *
      * @param {string} field
      */

@@ -43726,6 +43726,16 @@ var Errors = function () {
         }
 
         /**
+         * Retrieve the error messages
+         */
+
+    }, {
+        key: "getAll",
+        value: function getAll() {
+            return this.errors;
+        }
+
+        /**
          * Retrieve the error message for a field.
          *
          * @param {string} field
@@ -43740,7 +43750,7 @@ var Errors = function () {
         }
 
         /**
-         * Retrieve the error message for a field.
+         * Retrieve the error message for the first field.
          *
          * @param {string} field
          */
@@ -44432,11 +44442,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            form: null
+            form: null,
+            formEl: null
         };
     },
     created: function created() {
-        var serialized = $('#' + this.formId).serializeArray();
+        this.formEl = document.getElementById(this.formId);
+
+        var serialized = $(this.formEl).serializeArray();
         var data = {};
 
         $.map(serialized, function (n, i) {
@@ -44445,15 +44458,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.form = new __WEBPACK_IMPORTED_MODULE_0__core_Form__["a" /* default */](data);
     },
-    mounted: function mounted() {},
 
 
     methods: {
         submit: function submit() {
             var vm = this;
-            console.log(vm.form.data());
+
             $.request({
-                url: vm.$el.action,
+                url: vm.formEl.action,
                 data: vm.form.data(),
                 success: function success(data) {
                     vm.form.set(data);

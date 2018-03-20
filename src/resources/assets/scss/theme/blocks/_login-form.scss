@@ -40,4 +40,26 @@
 	.form__group__input {
 		min-width: 0;
 	}
+	
+	.form__group {
+		position: relative;
+	}
+	
+	.error-flag {
+		position: absolute;
+		top: 15px;
+		right: -6px;
+		background-color: $error-color;
+		border-radius: 50%;
+		color: #FFF;
+		font-size: 10px;
+		font-style: normal;
+		font-weight: bold;
+		width: 14px;
+		height: 14px;
+		padding-left: 1px;
+		line-height: 14px;
+		text-align: center;
+		box-sizing: border-box;
+	}
 }
