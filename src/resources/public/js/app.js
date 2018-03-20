@@ -44451,7 +44451,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         submit: function submit() {
             var vm = this;
-
+            console.log(vm.form.data());
             $.request({
                 url: vm.$el.action,
                 data: vm.form.data(),
@@ -44460,6 +44460,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     vm.form.errors.clear();
                 },
                 error: function error(data) {
+                    vm.form.errors.clear();
                     vm.form.onFail(data.errors);
                 }
             });

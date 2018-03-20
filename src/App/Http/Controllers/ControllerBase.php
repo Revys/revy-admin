@@ -131,7 +131,7 @@ class ControllerBase extends Controller
 
         $data['fields'] = static::listFieldsMap();
 
-        $data['items'] = $this->getModel()::withTranslation()->paginate(50);
+        $data['items'] = $this->getModel()::paginate(50);
 
         $data = static::normalizeListData($data);
 
@@ -358,7 +358,7 @@ class ControllerBase extends Controller
     public function prepareUpdateData($object, $data)
     {
         if (isset($object->status))
-            $data['status'] = isset($data['status']) ? $data['status'] : 0;
+            $data['status'] = isset($data['status']) ? (bool) $data['status'] : false;
 
         $model = $this->getModel();
 
@@ -385,7 +385,8 @@ class ControllerBase extends Controller
     {
         $this->prepareFiles($data);
 
-//        $data['status'] = isset($data['status']) ? $data['status'] : 0;
+        if (array_key_exists('status', $data))
+            $data['status'] = isset($data['status']) ? (bool) $data['status'] : false;
 
         $model = $this->getModel();
 

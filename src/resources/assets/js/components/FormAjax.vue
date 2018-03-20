@@ -30,7 +30,7 @@
         methods: {
             submit() {
                 let vm = this;
-
+console.log(vm.form.data());
                 $.request({
                     url: vm.$el.action,
                     data: vm.form.data(),
@@ -39,6 +39,7 @@
                         vm.form.errors.clear();
                     },
                     error(data) {
+                        vm.form.errors.clear();
                         vm.form.onFail(data.errors);
                     }
                 });
