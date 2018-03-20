@@ -18,7 +18,7 @@
             <script>
                 $("#button-{{ $action }}").click(function () {
                     let button_url = "@if (isset($href) && is_callable($href)){{ $href($controller_name, (isset($object) ? $object : null)) }}@else{{ $href }}@endif";
-                    axios['delete'](button_url, {})
+                    axios['{{ strtolower($method) }}'](button_url, {})
                         .then(response => {
                             if (response.data.redirect)
                                 window.location.href = response.data.redirect;

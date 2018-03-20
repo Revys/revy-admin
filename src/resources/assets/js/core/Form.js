@@ -36,7 +36,8 @@ class Form {
      */
     set(newData) {
         for (let property in this.originalData) {
-            this[property] = newData[property];
+            if (newData[property])
+                this[property] = newData[property];
         }
     }
 

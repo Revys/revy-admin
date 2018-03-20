@@ -3128,6 +3128,10 @@ popup {
   background-color: #f7f7f7;
 }
 
+.button:active {
+  background-color: #f0f0f0;
+}
+
 a.button {
   display: inline-block;
 }
@@ -3158,6 +3162,10 @@ a.button {
   background-color: #58b55c;
 }
 
+.button--success:active {
+  background-color: #4cac51;
+}
+
 .button--success.button--loading::after {
   background-color: #FFF;
 }
@@ -3171,6 +3179,10 @@ a.button {
 .button--danger:focus,
 .button--danger:hover {
   background-color: #ff5c44;
+}
+
+.button--danger:active {
+  background-color: #ff4b2f;
 }
 
 .button--danger.button--loading::after {
@@ -3188,6 +3200,10 @@ a.button {
   background-color: #fff280;
 }
 
+.button--warning:active {
+  background-color: #fff06b;
+}
+
 .button--info {
   color: #FFF;
   background-color: #81D4FA;
@@ -3197,6 +3213,10 @@ a.button {
 .button--info:focus,
 .button--info:hover {
   background-color: #6dcdf9;
+}
+
+.button--info:active {
+  background-color: #5ac7f8;
 }
 
 .button--info.button--loading::after {

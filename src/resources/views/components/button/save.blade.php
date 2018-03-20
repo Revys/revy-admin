@@ -1,11 +1,12 @@
 @php
     $label = $label ?? __('admin::buttons.save'); 
     $style = (isset($style)) ? $style : 'success';
-    $type = $type ?? 'submit';
+    $type = $type ?? 'link';
 @endphp
 
 @if ($type == 'submit')
     {{ Form::button($label, ['type' => 'submit', 'class' => 'button button--' . $style . ' button--' . $action]) }}
 @else
-    <a class="button button--{{ $style }} button--{{ $action }}" href="@if (isset($link) && is_callable($link)){{ $link($controller_name, (isset($object) ? $object : null)) }}@else{{ $link }}@endif">{!! $label !!}</a>
+    <a class="button button--{{ $style }} button--{{ $action }}" href="javascript:void(0)"
+       id="button-{{ $action }}">{!! $label !!}-save-l</a>
 @endif

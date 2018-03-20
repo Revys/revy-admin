@@ -15,7 +15,9 @@ $.fn.request = function(options)
 		action: 'index',
 		loader: 'global',
 		language: language,
-		complete: null,
+        complete: null,
+        success: null,
+        error: null,
 		data: {}
 	}; 
 	
@@ -78,24 +80,40 @@ let requestSuccess = function(options, data)
 
 		if (data.js !== '')
 			eval(data.js);
-			
-		if (options.complete)
-			options.complete(data);
+
+        if (options.success)
+            options.success(data);
+
+        requestFinally(options, data);
+
+        stopLoader('success');
 	} catch(ex) {
 		console.log(ex);
+        stopLoader('error');
 	}
-
-	throwAlerts(data);
-    stopLoader('success');
 }
 
 let requestFail = function(options, errors)
 {  
-	throwAlerts(errors);
     stopLoader('error');
 
 	console.log('Request failed', options);
 	console.log('Errors', errors);
+
+    if (options.error)
+        options.error(errors);
+
+	requestFinally(options, errors);
+}
+
+let requestFinally = function (options, data) {
+    throwAlerts(data);
+
+    if (options.complete)
+        options.complete(data);
+
+    if (data.redirect)
+        window.location.replace(data.redirect);
 }
 
 let throwAlerts = function(data)

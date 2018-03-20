@@ -12,19 +12,23 @@
 				</div>
 			@endif
 
-			{!! Form::open([
-				'route' => ['admin::insert', $controller_name],
-				'class' => 'form',
-				'files' => true
-			]) !!}
-				
-				@foreach($fieldGroup['fields'] as $field)
-					@includeDefault('fields.' . $field['type'])
-				@endforeach
-			
-				@includeDefault('buttons')
+			<form-ajax inline-template form-id="form-create">
+				{!! Form::open([
+					'route' => ['admin::insert', $controller_name],
+					'class' => 'form',
+					'files' => true,
+                    'id'=> 'form-create',
+                    '@submit.prevent' => 'submit'
+				]) !!}
 
-			{!! Form::close() !!}
+					@foreach($fieldGroup['fields'] as $field)
+						@includeDefault('fields.' . $field['type'])
+					@endforeach
+
+					@includeDefault('buttons')
+
+				{!! Form::close() !!}
+			</form-ajax>
 		</section>
 	@endforeach
 

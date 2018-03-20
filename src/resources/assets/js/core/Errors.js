@@ -24,13 +24,23 @@ class Errors {
         return Object.keys(this.errors).length > 0;
     }
 
-
     /**
      * Retrieve the error message for a field.
      *
      * @param {string} field
      */
     get(field) {
+        if (this.errors[field]) {
+            return this.errors[field];
+        }
+    }
+
+    /**
+     * Retrieve the error message for a field.
+     *
+     * @param {string} field
+     */
+    getFirst(field) {
         if (this.errors[field]) {
             return this.errors[field][0];
         }

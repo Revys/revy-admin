@@ -80,7 +80,7 @@ HTMLElement.prototype.select = function(options)
 
         _select.setAttribute("custom-select", "true");
 
-        _input = _select.cloneNode(true);
+        _input = _select;
 
         // Input
         var base_classes = _input.getAttribute("class");
@@ -131,12 +131,14 @@ HTMLElement.prototype.select = function(options)
         _component = document.createElement("div");
         _component.setAttribute("class", base_classes);
 
-        _component.appendChild(_input);
+        // _component.appendChild(_input);
         _component.appendChild(_value);
         _component.appendChild(_values);
     
-        // Replacement
-        _select.replaceWith(_component);
+        // Set up component
+        _select.parentNode.insertBefore(_component, _select.nextSibling);
+        // _select.replaceWith(_component);
+
         _input.style.display = 'none';
 
         // Styles
@@ -159,7 +161,7 @@ HTMLElement.prototype.select = function(options)
         });
 
         _input.addEventListener("change", onChange);
-        
+
         _value.addEventListener("click", triggerValues);
 
         document.addEventListener("click", function(event) {
@@ -172,7 +174,10 @@ HTMLElement.prototype.select = function(options)
 
     function select(index, trigger = false) {
         selected = options[index];
-        
+
+        _value.innerText = selected.text;
+        _input.value = selected.value;
+
         if (trigger)
             triggerEvent(_input, "change");
     }
@@ -234,9 +239,6 @@ HTMLElement.prototype.select = function(options)
     }
 
     function onChange(event) {
-        _value.innerText = selected.text;
-        _input.value = selected.value;
-
         if (opts.afterChange)
             opts.afterChange(selected);
     }

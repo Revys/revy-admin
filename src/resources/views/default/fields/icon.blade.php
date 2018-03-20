@@ -7,7 +7,8 @@
 			[
 				'id' => 'form-input-' . $field['field'], 
 				'class' => 'form__group__input' . 
-					(isset($field['size']) ? ' form__group__input--' . $field['size'] : '')
+					(isset($field['size']) ? ' form__group__input--' . $field['size'] : ''),
+				'v-model' => 'form.' . $field['field']
 			]
 		) }}
 		<span class="form__group__input__picked-icon"></span>

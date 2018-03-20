@@ -8,7 +8,8 @@
                 'id' => 'form-input-' . $field['field'],
                 'class' => 'form__group__input ' .
                            'form__group__image ' .
-                           ($errors->any($field['field']) ? 'form__group__input--error form__group__image--error' : '')
+                           ($errors->any($field['field']) ? 'form__group__input--error form__group__image--error' : ''),
+                'v-model' => 'form.' . $field['field']
             ]
         ) }}
 

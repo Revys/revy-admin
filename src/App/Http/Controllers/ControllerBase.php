@@ -3,6 +3,7 @@
 namespace Revys\RevyAdmin\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\Arrayable;
 use Revys\Revy\App\Traits\WithImages;
 use View;
 use Revys\RevyAdmin\App\Http\Composers\GlobalsComposer;
@@ -93,11 +94,19 @@ class ControllerBase extends Controller
      * @param array $data
      * @return array
      */
-    public function ajax($data = [])
+    public function ajax(...$data)
     {
-        $content = $data;
+        $content = [];
 
-        $content['alerts'] = $this->prepareAlerts();
+        foreach ($data as $value) {
+            if ($value instanceof Arrayable)
+                $value = $value->toArray();
+
+            $content = array_merge($content, $value);
+        }
+
+        if (! isset($content['redirect']))
+            $content['alerts'] = $this->prepareAlerts();
 
         return $content;
     }
@@ -202,9 +211,10 @@ class ControllerBase extends Controller
             'save'   => [
                 'label' => __('admin::buttons.save'),
                 'style' => 'success',
+                'method' => 'PUT',
                 'type'  => 'submit',
                 'href'  => function ($controller, $object) {
-                    return route('admin::update', [$controller, $object->id]);
+                    return route('admin::update', [$controller, optional($object)->id]);
                 }
             ],
             'delete' => (GlobalsComposer::getAction() !== 'create' ? [
@@ -292,7 +302,7 @@ class ControllerBase extends Controller
     /**
      * Create the specified resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function insert()
     {
@@ -310,14 +320,16 @@ class ControllerBase extends Controller
 
         Alerts::success('added');
 
-        return redirect()->route('admin::edit', [$this->getController(), $object->id]);
+        $redirect = route('admin::edit', [$this->getController(), $object->id]);
+
+        return $this->ajax($object, compact('redirect'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update($id)
     {
@@ -335,7 +347,7 @@ class ControllerBase extends Controller
 
         Alerts::success('saved');
 
-        return redirect()->route('admin::edit', [$this->getController(), $id]);
+        return $this->ajax($object);
     }
 
     /**

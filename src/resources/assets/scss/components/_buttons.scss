@@ -34,6 +34,10 @@ $button-default-color: #FFF;
 	&:focus, &:hover {
 		background-color: darken($button-default-color, 3%);
 	}
+
+	&:active {
+		background-color: darken($button-default-color, 6%);
+	}
 }
 a.button {
     display: inline-block;
@@ -62,6 +66,10 @@ a.button {
 		background-color: darken($button-success-color, 4%);
 	}
 
+	&:active {
+		background-color: darken($button-success-color, 8%);
+	}
+
 	&.button--loading::after {
 		background-color: #FFF;
 	}
@@ -74,6 +82,10 @@ a.button {
 	
 	&:focus, &:hover {
 		background-color: darken($button-danger-color, 4%);
+	}
+
+	&:active {
+		background-color: darken($button-danger-color, 8%);
 	}
 
 	&.button--loading::after {
@@ -89,6 +101,10 @@ a.button {
 	&:focus, &:hover {
 		background-color: darken($button-warning-color, 4%);
 	}
+
+	&:active {
+		background-color: darken($button-warning-color, 8%);
+	}
 }
 
 .button--info {
@@ -98,6 +114,10 @@ a.button {
 	
 	&:focus, &:hover {
 		background-color: darken($button-info-color, 4%);
+	}
+
+	&:active {
+		background-color: darken($button-info-color, 8%);
 	}
 
 	&.button--loading::after {

@@ -9,7 +9,8 @@
 					'id' => 'form-input-' . $field['field'], 
 					'class' => 'form__group__input form__group__textarea editor' . 
 						(isset($field['size']) ? ' form__group__input--' . $field['size'] : '') .
-						($errors->any($field['field']) ? ' form__group__input--error' : '')
+						($errors->any($field['field']) ? ' form__group__input--error' : ''),
+					'v-model' => 'form.' . $field['field']
 				]
 			) }}
 			@includeDefault('fields._errors')
