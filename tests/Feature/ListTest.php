@@ -3,7 +3,7 @@
 namespace Revys\RevyAdmin\Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Revys\Revy\Tests\Languages;
+use Revys\RevyAdmin\Tests\Languages;
 use Revys\RevyAdmin\App\Indexer;
 use Revys\RevyAdmin\App\User;
 use Revys\RevyAdmin\Tests\TestCase;

@@ -16,7 +16,7 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $pathToFactories = base_path('vendor/revys/revy-admin/database/factories');
+        $pathToFactories = base_path('vendor/revys/revy-admin/src/database/factories');
 
         $this->app->make('Illuminate\Database\Eloquent\Factory')->load($pathToFactories);
 

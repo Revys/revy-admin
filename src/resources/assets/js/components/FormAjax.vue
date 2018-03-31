@@ -31,7 +31,7 @@
                 let vm = this;
 
                 $.request({
-                    url: vm.formEl.action,
+                    url: vm.formEl.getAttribute('action'),
                     data: vm.form.data(),
                     success(data) {
                         vm.form.set(data);

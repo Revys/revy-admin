@@ -33,7 +33,10 @@
     "psr-4": {
       "Revys\\RevyAdmin\\Tests\\": "tests/",
       "Revys\\RevyAdmin\\Database\\Seeds\\": "src/database/seeds/"
-    }
+    },
+    "files": [
+      "tests/utilities/functions.php"
+    ]
   },
   "extra": {
     "laravel": {

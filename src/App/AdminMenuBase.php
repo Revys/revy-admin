@@ -53,4 +53,12 @@ class AdminMenuBase extends Entity
             self::clearNavigationCache();
         });
     }
+
+    /**
+     * @return string
+     */
+    public function getPath()
+    {
+        return route("admin::path", [$this->controller, $this->action]);
+    }
 }

@@ -6,7 +6,7 @@ use App\Service;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Revys\Revy\Tests\Languages;
+use Revys\RevyAdmin\Tests\Languages;
 use Revys\Revy\Tests\Unit\ImagesTest;
 use Revys\RevyAdmin\App\Indexer;
 use Revys\RevyAdmin\Tests\TestCase;

@@ -3,7 +3,7 @@
 namespace Revys\RevyAdmin\Tests\Feature;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Revys\Revy\Tests\Languages;
+use Revys\RevyAdmin\Tests\Languages;
 use Revys\RevyAdmin\App\User;
 use Revys\RevyAdmin\Tests\TestCase;
 use function GuzzleHttp\Psr7\uri_for;
@@ -82,8 +82,7 @@ class AuthTest extends  TestCase
             'id' => $user->email,
             'password' => 'secret'
         ])
-            ->assertSuccessful()
-            ->assertJsonFragment(['error']);
+            ->assertStatus(403);
     }
 
     /** @test */

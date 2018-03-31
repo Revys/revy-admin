@@ -13,22 +13,22 @@ class LanguageControllerBase extends Controller
     {
         parent::__construct();
 
-        $this->model = '\Revys\Revy\App\\'.studly_case($this->controller);
+        $this->model = '\Revys\Revy\App\\' . studly_case($this->controller);
     }
 
     public static function listFieldsMap()
     {
         return [
-			[
-				'field' => 'title',
-				'title' => __('Заголовок'),
-				'link' => true
-			],
-			[
-				'field' => 'code',
-				'title' => __('Код языка')
-			]
-		];
+            [
+                'field' => 'title',
+                'title' => __('Заголовок'),
+                'link'  => true
+            ],
+            [
+                'field' => 'code',
+                'title' => __('Код языка')
+            ]
+        ];
     }
 
     public static function editFieldsMap()
@@ -37,21 +37,21 @@ class LanguageControllerBase extends Controller
             [
                 'caption' => __('Базовая информация'),
                 'actions' => self::editActionsMap(),
-                'fields' => [
+                'fields'  => [
                     [
-                        'type' => 'string',
+                        'type'  => 'string',
                         'label' => __('Заголовок'),
                         'field' => 'title',
                         'value' => 'title'
                     ],
                     [
-                        'type' => 'string',
+                        'type'  => 'string',
                         'label' => __('Код языка'),
                         'field' => 'code',
                         'value' => 'code'
                     ],
                     [
-                        'type' => 'bool',
+                        'type'  => 'bool',
                         'label' => __('Опубликован'),
                         'field' => 'status',
                         'value' => 'status'
@@ -60,15 +60,15 @@ class LanguageControllerBase extends Controller
             ]
         ];
     }
-    
+
     public function toggleTranslationMode()
     {
         \Revy::assertAjax();
 
         $value = ! Session::get('admin::translation_mode');
-        
+
         Session::put('admin::translation_mode', $value);
-        
+
         if ($value)
             Alerts::success(__('Режим перевода включен'));
         else
@@ -107,26 +107,26 @@ class LanguageControllerBase extends Controller
             $group = $data['group'];
             $translations = $data['translations'];
             $language = $data['language'];
-    
+
             if ($group == '')
                 throw new \Exception("Can't save. Group is empty");
             if ($translations == '')
                 throw new \Exception("Can't save. Translations are empty");
             if ($language == '')
                 throw new \Exception("Can't save. Language is empty");
-                
-            
+
+
             $translation = app()->make(Translations::class);
-    
+
             $translation->saveTranslations($group, $translations, $language);
-            
+
             Alerts::success('saved');
         } catch (\Exception $ex) {
             \Log::error($ex->getMessage());
             Alerts::fail($ex->getMessage());
         }
 
-		return $this->ajax();
+        return $this->ajax();
     }
 
     /**
@@ -140,11 +140,11 @@ class LanguageControllerBase extends Controller
 
         try {
             $translation = app()->make(Translations::class);
-    
+
             $language = Language::findOrFail($language);
 
             $translation->indexPhrases(null, $language->code);
-            
+
             Alerts::success(__('Фразы успешно проиндексированы'));
         } catch (\Exception $ex) {
             \Log::error($ex);

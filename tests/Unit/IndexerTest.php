@@ -3,7 +3,7 @@
 namespace Revys\RevyAdmin\Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Revys\Revy\Tests\TestCase;
+use Revys\RevyAdmin\Tests\TestCase;
 use Revys\RevyAdmin\App\Helpers\Routes;
 use Revys\RevyAdmin\App\Indexer;
 use Schema;
