@@ -30,22 +30,20 @@
 
         methods: {
             remove: function (index) {
-                this.items.splice(index, 1);
-
-                // @todo Send remove image request
+                var vm = this;
 
                 $.request({
-                    controller: 'services',
+                    controller: 'service',
                     action: 'remove_image',
                     data: {
-                        id: this.items[index-1].id
+                        object_id: this.items[index].object_id,
+                        filename: this.items[index].filename
                     },
                     complete: function() {
-                        console.log('Done');
+                        vm.items.splice(index, 1);
+                        Alerts.add('Удалено', 'success');
                     }
                 });
-
-                Alerts.add('Удалено', 'success');
             }
         }
     }

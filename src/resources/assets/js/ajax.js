@@ -61,8 +61,14 @@ let request = function(options)
 	if (options.url)
 		url = options.url;
 
+    var config = {
+        url: url,
+        method: options.type,
+		data: options.data
+    };
+
 	return new Promise((resolve, reject) => {
-		axios[options.type](url, options.data)
+		axios(config)
 			.then(response => {
 				requestSuccess(options, response.data);
 			})

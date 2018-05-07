@@ -4,12 +4,12 @@
         {{ Form::file(
             $field['field'],
             [
-                'multiple' => ($field['field'] == 'images' ? true : false),
+                'multiple' => $field['multiple'] ?? false,
                 'id' => 'form-input-' . $field['field'],
                 'class' => 'form__group__input ' .
                            'form__group__image ' .
                            ($errors->any($field['field']) ? 'form__group__input--error form__group__image--error' : ''),
-                'v-model' => 'form.' . $field['field']
+                'name' => $field['field']
             ]
         ) }}
 

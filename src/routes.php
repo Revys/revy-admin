@@ -41,7 +41,7 @@ Route::group([
 			abort(404);
 		})->name('settings');
 
-
+\Log::info(request()->all());
 
 		// List Path
 		Route::get('{controller}', function($controller){
@@ -57,7 +57,7 @@ Route::group([
 				return $class->callAction(camel_case($action), $parameters = []);
 			})->where([
 				'controller' => '\w+',
-				'action' => '\w{0,}'
+				'action' => '[a-z]+\w{0,}'
 			])->name('ajax');
 		}
 
@@ -74,7 +74,7 @@ Route::group([
 		])->name('edit');
 
 		// Update Path
-		Route::put('{controller}/{id}', function($controller, $id){
+		Route::post('{controller}/{id}', function($controller, $id){
 			$class = app()->make(Routes::getAdminControllerClassName($controller));
 			return $class->callAction('update', $parameters = [$id]);
 		})->where([

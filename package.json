@@ -21,6 +21,7 @@
     "jquery": "3.*",
     "sortablejs": "^1.7.0",
     "vue": "^2.*",
+    "vue-picture-input": "^2.1.5",
     "vue-prevent-parent-scroll": "^1.0.5",
     "vue-template-compiler": "^2.*"
   }

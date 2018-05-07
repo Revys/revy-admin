@@ -1,4 +1,4 @@
-<div class="form__group__errors" v-show="form.errors.any()">
+<div class="form__group__errors" v-show="form.errors.any()" style="display: none">
 	<div class="form__group__error" v-for="(error, index) in form.errors.get('{{ $field['field'] }}')" :key="index" v-text="error"></div>
 </div>
 

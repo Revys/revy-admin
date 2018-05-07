@@ -5,14 +5,13 @@
 			$field['field'], 
 			(isset($object) ? (! is_string($field['value']) ? $field['value']($object) : $object->{$field['value']}) : ''), 
 			[
-				'id' => 'form-input-' . $field['field'], 
+				'id' => 'form-input-' . $field['field'],
 				'class' => 'form__group__input' . 
-					(isset($field['size']) ? ' form__group__input--' . $field['size'] : ''),
-				'v-model' => 'form.' . $field['field']
+					(isset($field['size']) ? ' form__group__input--' . $field['size'] : '')
 			]
 		) }}
 		<span class="form__group__input__picked-icon"></span>
-		
+
 		@includeDefault('fields._errors')
 	</div>
 </div>
@@ -32,5 +31,8 @@
 			},
 			inputSearch: true
 		});
+        $("#form-input-{{ $field['field'] }}").on('iconpickerSelected', function(event){
+			vm.$refs['form-edit'].form.{{ $field['field'] }} = event.iconpickerValue;
+        });
 	</script>
 @endpush

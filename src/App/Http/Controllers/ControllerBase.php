@@ -554,6 +554,17 @@ class ControllerBase extends Controller
         }
     }
 
+    public function removeImage()
+    {
+        $request = request();
+        $object_id = $request->input('object_id');
+        $filename = $request->input('filename');
+
+        $object = $this->getModel()::findOrFail($object_id);
+
+        return $object->images()->remove($filename);
+    }
+
     private function prepareFiles(&$data)
     {
         $files = request()->allFiles();

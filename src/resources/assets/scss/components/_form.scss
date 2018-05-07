@@ -14,16 +14,24 @@ select {
 		margin-bottom: 2px;
 		margin-right: $default-padding / 2;
 		cursor: pointer;
+		margin-top: 0;
 	}
 }
 
 .form__group__label {
 	font-size: $font-size;
 	color: #555;
-	display: block;
+	display: inline-block;
+	width: 160px;
 	line-height: 1;
 	margin-bottom: $default-padding / 2;
 	font-weight: bold;
+	vertical-align: top;
+	margin-top: $input-padding;
+}
+
+.form__group__input-group {
+	display: inline-block;
 }
 
 .form__group__input {
@@ -32,7 +40,7 @@ select {
 	display: block;
 	width: 100%;
 	max-width: 460px;
-	min-width: 460px * 0.7;
+	min-width: 460px * 0.8;
 	border: 1px solid $input-border-color;
 	border-radius: $input-border-radius;
 	padding: $input-padding;

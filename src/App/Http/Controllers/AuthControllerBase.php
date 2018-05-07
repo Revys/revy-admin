@@ -5,6 +5,7 @@ namespace Revys\RevyAdmin\App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Revys\RevyAdmin\App\Alerts;
 use Revys\RevyAdmin\App\User;
 

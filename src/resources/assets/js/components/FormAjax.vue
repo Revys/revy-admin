@@ -30,9 +30,22 @@
             submit() {
                 let vm = this;
 
+                var data = new FormData();
+
+                for(var index in vm.form.data()) {
+                    data.append(index, vm.form[index]);
+                }
+
+                $("#" + vm.formId).find('input[type=file]').each(function (i, el) {
+                    for (var i = 0; i < el.files.length; i++) {
+                        data.append(el.name + (el.files.length > 1 ? '[]' : ''), el.files[i], el.files[i].name);
+                    }
+                });
+
                 $.request({
+                    type: 'POST',
                     url: vm.formEl.getAttribute('action'),
-                    data: vm.form.data(),
+                    data: data,
                     success(data) {
                         vm.form.set(data);
                         vm.form.errors.clear();

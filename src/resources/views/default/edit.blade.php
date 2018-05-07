@@ -12,7 +12,7 @@
                 </div>
             @endif
 
-            <form-ajax inline-template form-id="form-edit">
+            <form-ajax inline-template form-id="form-edit" ref="form-edit">
                 {!! Form::open([
                     'route' => ['admin::update', $controller_name, $object->id],
                     'class' => 'form',
@@ -21,7 +21,7 @@
                     '@submit.prevent' => 'submit'
                 ]) !!}
 
-                    {{ method_field('PUT') }}
+                    {{ method_field('POST') }}
 
                     @foreach($fieldGroup['fields'] as $field)
                         @includeDefault('fields.' . $field['type'])
