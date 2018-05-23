@@ -1,3 +1,4 @@
+
 @extends(RevyAdmin::layout('base'))
 
 @section('content')

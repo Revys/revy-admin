@@ -32,7 +32,8 @@ class TranslationsBase
                     \RevyAdmin::getPackagePath('resources')
                 ],
                 [
-                    'buttons' => __('Админ-панель: Кнопки')
+                    'buttons' => __('Админ-панель: Кнопки'),
+                    'alerts' => __('Админ-панель: Сообщения')
                 ],
                 \RevyAdmin::getPackageAlias()
             );
@@ -79,15 +80,20 @@ class TranslationsBase
 
     public function addGroups($path, $sources, $titles = [], $packageAlias = null)
     {
-        $files = \File::allFiles($path);
-
-        if (count($files)) {
-            foreach ($files as $file) {
-                if ($file->getExtension() == 'php') {
-                    $group = $file->getBaseName('.php');
-
-                    $this->addGroup($group, $path, $sources, ($titles[$group] ?? $group), 'php', $packageAlias);
-                }
+//        $files = \File::allFiles($path);
+//
+//        if (count($files)) {
+//            foreach ($files as $file) {
+//                if ($file->getExtension() == 'php') {
+//                    $group = $file->getBaseName('.php');
+//
+//                    $this->addGroup($group, $path, $sources, ($titles[$group] ?? $group), 'php', $packageAlias);
+//                }
+//            }
+//        }
+        if (count($titles)) {
+            foreach ($titles as $name => $title) {
+                $this->addGroup($name, $path, $sources, $title, 'php', $packageAlias);
             }
         }
     }
@@ -199,7 +205,6 @@ class TranslationsBase
     /**
      * @param null $group
      * @param null $language
-     * @todo Replace 'create_function' for something else
      * @throws \Exception
      */
     public function indexPhrases($group = null, $language = null)
@@ -283,7 +288,7 @@ class TranslationsBase
             if ($group['type'] == 'json') {
                 $stringKeys = array_flip(array_unique($stringKeys));
 
-                $stringKeys = array_map(create_function('$n', "return '';"), $stringKeys);
+                $stringKeys = array_map(function(){ return ''; }, $stringKeys);
 
                 $translations = array_merge($stringKeys, array_intersect_key($translations, $stringKeys));
             } else {
@@ -300,7 +305,7 @@ class TranslationsBase
         
                 $groupKeys = array_flip(array_unique($groupKeys));
 
-                $groupKeys = array_map(create_function('$n', "return '';"), $groupKeys);
+                $groupKeys = array_map(function(){ return ''; }, $groupKeys);
 
                 $translations = array_merge($groupKeys, array_intersect_key($translations, $groupKeys));
             }

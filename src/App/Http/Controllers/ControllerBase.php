@@ -323,7 +323,7 @@ class ControllerBase extends Controller
 
         $this->updateImages($object, $data);
 
-        Alerts::success('added');
+        Alerts::success(__('admin::alerts.added'));
 
         $redirect = route('admin::edit', [$this->getController(), $object->id]);
 
@@ -350,7 +350,7 @@ class ControllerBase extends Controller
 
         $object->update($data);
 
-        Alerts::success('saved');
+        Alerts::success(__('admin::alerts.saved'));
 
         return $this->ajax($object);
     }

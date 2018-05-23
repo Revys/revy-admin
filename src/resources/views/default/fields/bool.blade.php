@@ -5,7 +5,7 @@
 		{{ Form::checkbox(
 			$field['field'], 
 			1, 
-			(isset($object) ? (is_callable($field['value']) ? $field['value']($object) : $object->{$field['value']}) : ''), 
+			(isset($object) ? (is_callable($field['value']) ? $field['value']($object) : $object->{$field['value']}) : ($field['field'] == 'status' ? true : '')),
 			[
 				'id' => 'form-input-' . $field['field'],
 				'v-model' => 'form.' . $field['field']

@@ -12,7 +12,7 @@
 				</div>
 			@endif
 
-			<form-ajax inline-template form-id="form-create">
+			<form-ajax inline-template form-id="form-create" ref="form-create">
 				{!! Form::open([
 					'route' => ['admin::insert', $controller_name],
 					'class' => 'form',

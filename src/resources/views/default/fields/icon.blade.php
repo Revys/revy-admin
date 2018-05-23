@@ -32,7 +32,7 @@
 			inputSearch: true
 		});
         $("#form-input-{{ $field['field'] }}").on('iconpickerSelected', function(event){
-			vm.$refs['form-edit'].form.{{ $field['field'] }} = event.iconpickerValue;
+			vm.$refs['form-{{ isset($object) ? 'edit' : 'create' }}'].form.{{ $field['field'] }} = event.iconpickerValue;
         });
 	</script>
 @endpush
