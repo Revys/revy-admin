@@ -2,6 +2,7 @@
 
 namespace Revys\RevyAdmin\App;
 
+use Illuminate\Support\Facades\Log;
 use Revys\Revy\App\Language;
 use Revys\Revy\App\Revy;
 use Symfony\Component\Finder\Finder;
@@ -232,34 +233,34 @@ class TranslationsBase
         $functions = ['trans', 'trans_choice', 'Lang::get', 'Lang::choice', 'Lang::trans', 'Lang::transChoice', '@lang', '@choice', '__'];
 
         $groupPattern =                          // See https://regexr.com/3i79b
-            // "[^\w|>]" .                          // Must not have an alphanum or _ or > before real method
+            // "[^\w|>]" .                       // Must not have an alphanum or _ or > before real method
             '(' . implode('|', $functions) . ')' .  // Must start with one of the functions
             "\(" .                               // Match opening parenthesis
             "[\'\"]" .                           // Match " or '
-            '(([a-zA-Z0-9_-]+)::)*' .              // Package prefix
+            '(([a-zA-Z0-9_-]+)::)*' .            // Package prefix
             '(' .                                // Start a new group to match:
-                '[a-zA-Z0-9_-]+' .               // Must start with group
+                '([a-zA-Z0-9_-]+)' .               // Must start with group
                 "([.|\/][^\1)]+)+" .             // Be followed by one or more items/keys
             ')' .                                // Close group
             "[\'\"]" .                           // Closing quote
             "[\),]";                             // Close parentheses or new parameter
 
         $stringPattern =
-            // "[^\w|>]" .                                     // Must not have an alphanum or _ or > before real method
-            '(' . implode('|', $functions) . ')' .          // Must start with one of the functions
+            // "[^\w|>]" .                                  // Must not have an alphanum or _ or > before real method
+            '(' . implode('|', $functions) . ')' .     // Must start with one of the functions
             "\(" .                                          // Match opening parenthesis
             "(?P<quote>['\"])" .                            // Match " or ' and store in {quote}
             "(?P<string>(?:\\\k{quote}|(?!\k{quote}).)*)" . // Match any string that can be {quote} escaped
             "\k{quote}" .                                   // Match " or ' previously matched
             "[\),]";                                        // Close parentheses or new parameter
 
-        // Find all PHP + Twig files in the app folder, except for storage
+        // Find all PHP files in the app folder, except for storage
         foreach ($groups as $group) {
             $groupKeys = [];
             $stringKeys = [];
 
             $finder = new Finder();
-            $finder->in($group['sources'])->exclude('storage')->name('*.php')->name('*.twig')->files();
+            $finder->in($group['sources'])->exclude('storage')->name('*.php')->files();
 
             /** @var \Symfony\Component\Finder\SplFileInfo $file */
             foreach ($finder as $file) {
@@ -267,7 +268,8 @@ class TranslationsBase
                 if (preg_match_all("/$groupPattern/siU", $file->getContents(), $matches)) {
                     // Get all matches
                     foreach ($matches[4] as $key => $value) {
-                        $groupKeys[] = ($matches[2][$key]) . $value;
+                        if ($matches[5][$key] == $group['name'])
+                            $groupKeys[] = ($matches[2][$key]) . $value;
                     }
                 }
 

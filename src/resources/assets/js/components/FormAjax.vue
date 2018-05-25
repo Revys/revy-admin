@@ -1,5 +1,6 @@
 <script>
     import Form from "../core/Form";
+    import FroalaConfig from "./froala/config.js"
 
     export default {
         props: [
@@ -9,7 +10,8 @@
         data() {
             return {
                 form: null,
-                formEl: null
+                formEl: null,
+                config: FroalaConfig
             }
         },
 
@@ -21,6 +23,12 @@
 
             $.map(serialized, function(n, i){
                 data[n.name] = n.value;
+            });
+
+            $.map( $(this.formEl).find("input[type=hidden]"), function(n, i){
+                if (n.dataset.name) {
+                    data[n.dataset.name] = n.value;
+                }
             });
 
             this.form = new Form(data);

@@ -19,6 +19,7 @@ window.Vue = require('vue');
 // Import vendor
 // ======================================================================
 Vue.use(require('vue-prevent-parent-scroll'));
+
 require('fontawesome-iconpicker');
 window.Sortable = require('sortablejs');
 
@@ -31,3 +32,4 @@ require('./directives/click-outside');
 
 require('./components/Transition.js');
 require('./components/select.js');
+require('./components/editor.js');

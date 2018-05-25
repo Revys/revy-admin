@@ -60,7 +60,7 @@ class RevyAdminServiceProvider extends ServiceProvider
 
     public function initProviders()
     {
-        $this->app->register(ComposerServiceProvider::class);
+        $this->app->register(ComposerServiceProvider::class); // @todo Load admin composer provider only in admin routes
         $this->app->register(BladeDirectivesServiceProvider::class);
     }
 
