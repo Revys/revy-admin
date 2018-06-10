@@ -2,13 +2,11 @@
 
 namespace Revys\RevyAdmin\Tests\Feature;
 
-use App\Service;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Revys\RevyAdmin\Tests\Languages;
-use Revys\Revy\Tests\Unit\ImagesTest;
 use Revys\RevyAdmin\App\Indexer;
+use Revys\RevyAdmin\Tests\Languages;
 use Revys\RevyAdmin\Tests\TestCase;
 use Revys\RevyAdmin\Tests\TestEntity;
 use Revys\RevyAdmin\Tests\TestEntityController;
@@ -32,17 +30,28 @@ class ImageCRUDTest extends TestCase
         self::signIn();
     }
 
+    /**
+     * @param string $name
+     * @return \Illuminate\Http\Testing\File
+     */
+    public static function createImage($name = null)
+    {
+        $name = $name ?: str_random(10);
+
+        return UploadedFile::fake()->image($name);
+    }
+
     /** @test */
     public function image_can_be_uploaded()
     {
         $object = create(TestEntity::class);
 
-        $this->put(
+        $this->post(
             route('admin::update', ['test_entity', $object->id]),
             [
                 'image' => UploadedFile::fake()->image('image.png')
             ]
-        )->assertRedirect(route('admin::edit', ['test_entity', $object->id]));
+        )->assertSuccessful();
 
         $this->assertCount(1, $object->fresh()->images());
     }
@@ -52,7 +61,7 @@ class ImageCRUDTest extends TestCase
     {
         $object = create(TestEntity::class);
 
-        $this->put(
+        $this->post(
             route('admin::update', ['test_entity', $object->id]),
             [
                 'images' => [
@@ -61,7 +70,7 @@ class ImageCRUDTest extends TestCase
                     UploadedFile::fake()->image('image3.png')
                 ]
             ]
-        )->assertRedirect(route('admin::edit', ['test_entity', $object->id]));
+        )->assertSuccessful();
 
         $this->assertCount(3, $object->fresh()->images());
     }
@@ -81,7 +90,7 @@ class ImageCRUDTest extends TestCase
 
         $object = TestEntity::firstOrFail();
 
-        $request->assertRedirect(route('admin::edit', ['test_entity', $object->id]));
+        $request->assertSuccessful();
 
         $this->assertCount(1, $object->fresh()->images());
     }
@@ -92,10 +101,10 @@ class ImageCRUDTest extends TestCase
     {
         $object = create(TestEntity::class);
 
-        $image = ImagesTest::createImage();
+        $image = self::createImage();
         $object->images()->add($image);
 
-        $this->put(
+        $this->post(
             route('admin::update', ['test_entity', $object->id]),
             [
                 'image' => [
@@ -103,7 +112,7 @@ class ImageCRUDTest extends TestCase
                     UploadedFile::fake()->image('image.png')
                 ]
             ]
-        )->assertRedirect(route('admin::edit', ['test_entity', $object->id]));
+        )->assertSuccessful();
 
         $this->assertCount(1, $object->fresh()->images());
     }
@@ -115,13 +124,14 @@ class ImageCRUDTest extends TestCase
     {
         $object = create(TestEntity::class);
 
-        $image = ImagesTest::createImage();
+        $image = self::createImage();
         $image = $object->images()->add($image);
 
         $this->assertCount(1, $object->fresh()->images());
 
         $this->post(route("admin::path", ['test_entity', 'remove_image']), [
-            'id' => $image->id
+            'object_id' => $image->getObject()->id,
+            'filename' => $image->filename
         ]);
 
         $this->assertCount(0, $object->fresh()->images());

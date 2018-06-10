@@ -41,8 +41,6 @@ Route::group([
 			abort(404);
 		})->name('settings');
 
-\Log::info(request()->all());
-
 		// List Path
 		Route::get('{controller}', function($controller){
             $class = app()->make(Routes::getAdminControllerClassName($controller));
@@ -113,7 +111,7 @@ Route::group([
         // Base Path
         Route::any('{controller}/{action}/{object?}', function($controller, $action = 'index', $object = null){
             $class = app()->make(Routes::getAdminControllerClassName($controller));
-            return $class->callAction($action, $parameters = [$object]);
+            return $class->callAction(camel_case($action), $parameters = [$object]);
         })->where([
             'controller' => '\D\w+',
             'action' => '\D\w{0,}',
