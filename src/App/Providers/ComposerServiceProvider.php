@@ -11,7 +11,7 @@ class ComposerServiceProvider extends ServiceProvider
 	public function register()
 	{
 		View::composer(
-            '*', 
+            'admin::*',
 			'Revys\RevyAdmin\App\Http\Composers\GlobalsComposer'
         );
 

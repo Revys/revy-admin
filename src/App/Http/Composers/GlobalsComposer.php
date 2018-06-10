@@ -2,11 +2,11 @@
 
 namespace Revys\RevyAdmin\App\Http\Composers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Revys\Revy\App\Language;
 use Revys\Revy\App\Revy;
 use Revys\RevyAdmin\App\Helpers\RoutesBase;
-use View;
-use Auth;
-use Revys\Revy\App\Language;
 
 class GlobalsComposer
 {
