@@ -15,7 +15,7 @@ class TranslationsBase
     public function __construct()
     {
         // Backend
-        if (config('revy.package_development')) {
+        if (config('revy.config.package_development')) {
             $this->addGroup(
                 'revy-admin',
                 \RevyAdmin::getPackagePath('translations'),
